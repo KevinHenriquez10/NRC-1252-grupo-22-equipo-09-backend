@@ -18,4 +18,4 @@ const productosModel = new Schema({
     }
 });
 
-module.exports = mongoose.model("Comercial", productosModel)
+module.exports = mongoose.model("Productos", productosModel)

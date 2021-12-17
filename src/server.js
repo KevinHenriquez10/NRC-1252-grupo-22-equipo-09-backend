@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require("mongoose");
 const Productos = require("./modelos/productosModel");
+const RegistroPredio = require("./modelos/registroPredioModel");
+const Usuario = require("./modelos/usuarioModel");
 const app = express();
 
 app.use(cors()); // Middleware cors
@@ -26,7 +28,7 @@ app.get('/', (req, res) => {
 */
 app.post("/usuarioConfiguracion/registro", function (req, res) {
     const data = req.body;
-    const prod = new Comercial(data);
+    const prod = new Productos(data);
     prod.save( function (error) {
       if (error){
         res.send({estado: "error", msg: "ERROR: producto no guardado! "});
@@ -34,7 +36,31 @@ app.post("/usuarioConfiguracion/registro", function (req, res) {
       }
       res.send({estado: "ok", msg: "Producto Guardado! "});
     })
-})
+});
+
+app.post("/registro", function (req, res) {
+  const data = req.body;
+  const prod = new RegistroPredio(data);
+  prod.save( function (error) {
+    if (error){
+      res.send({estado: "error", msg: "ERROR: producto no guardado! "});
+      return false;
+    }
+    res.send({estado: "ok", msg: "Producto Guardado! "});
+  })
+});
+
+app.post("/registro/usuario", function (req, res) {
+  const data = req.body;
+  const prod = new Usuario(data);
+  prod.save( function (error) {
+    if (error){
+      res.send({estado: "error", msg: "ERROR: producto no guardado! "});
+      return false;
+    }
+    res.send({estado: "ok", msg: "Producto Guardado! "});
+  })
+});
 
 
 app.listen(8080, () => {
