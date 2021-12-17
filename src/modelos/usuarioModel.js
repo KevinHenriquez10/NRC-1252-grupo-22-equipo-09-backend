@@ -1,41 +1,41 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const usuarioModel = new Schema({
     nombre:{
-        type: "string",
+        type: 'string',
         required: true
     },
     apellido:{
-        type: "string",
+        type: 'string',
         required: true
     },
     tipoDocumento:{
-        type: "string",
+        type: 'string',
         required: true
     },
     documento:{
-        type: "number",
+        type: 'number',
         unique: true,
         required: true
     },
     correo:{
-        type: "string",
+        type: 'string',
         unique: true,
         required: true
     },
     telefono:{
-        type: "number",
+        type: 'number',
         required: true
     },
     sexo:{
-        type: "string",
+        type: 'string',
         required: true
     },
     rol:{
-        type: "string",
+        type: 'string',
         required: true
     }
 });
 
-module.exports = mongoose.model("Usuario", usuarioModel)
+module.exports = mongoose.model('Usuario', usuarioModel)

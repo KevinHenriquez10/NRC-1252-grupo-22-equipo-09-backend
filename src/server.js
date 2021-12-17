@@ -1,17 +1,19 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require("mongoose");
-const Productos = require("./modelos/productosModel");
-const RegistroPredio = require("./modelos/registroPredioModel");
-const Usuario = require("./modelos/usuarioModel");
+const mongoose = require('mongoose');
+const RegistroPredio = require('./modelos/registroPredioModel');
+const Usuario = require('./modelos/usuarioModel');
+const AsignacionPredio = require('./modelos/asignacionPredioModel');
+const CrearCultivo = require("./modelos/crearCultivoModel")
+require('dotenv').config();
 const app = express();
 
 app.use(cors()); // Middleware cors
 app.use(express.json());  // convertir a Json
 
 //Conexión a la base de datos
-mongoose.connect("mongodb://127.0.0.1:27017/comercio")
-  .then(res => console.log("conectado a la base de datos"))
+mongoose.connect(process.env.URL_DATABASE)
+  .then(res => console.log("conectado a la base de datos 🔥🔥"))
   .catch(error => console.log(error));
 
 
@@ -20,45 +22,78 @@ app.get('/', (req, res) => {
 });
 
 /*
-- API Rest Crear Registro
+- API Rest Registro Predio
 - Ruta: /usuarioConfiguracion/registro
 - Metodo: POST
-- Datos de entrada: {nombre_predio: "baranoa", codigo: 001, area: "rural", latitud: 102, longitud: 203}
 - Respuesta: {estado: "ok", msg: "Producto Creado con exito!"}
 */
-app.post("/usuarioConfiguracion/registro", function (req, res) {
-    const data = req.body;
-    const prod = new Productos(data);
-    prod.save( function (error) {
-      if (error){
-        res.send({estado: "error", msg: "ERROR: producto no guardado! "});
-        return false;
-      }
-      res.send({estado: "ok", msg: "Producto Guardado! "});
-    })
-});
 
-app.post("/registro", function (req, res) {
+app.post("/usuarioConfiguracion/registro", (req, res) => {
   const data = req.body;
   const prod = new RegistroPredio(data);
-  prod.save( function (error) {
+  prod.save( (error) => {
     if (error){
-      res.send({estado: "error", msg: "ERROR: producto no guardado! "});
+      res.send({estado: "error", msg: "ERROR: producto no guardado! 😒"});
       return false;
     }
-    res.send({estado: "ok", msg: "Producto Guardado! "});
+    res.send({estado: "ok", msg: "Producto Guardado! ✨"});
   })
 });
 
-app.post("/registro/usuario", function (req, res) {
+/*
+- API Rest Registro Usuario
+- Ruta: /administrador/registro
+- Metodo: POST
+- Respuesta: {estado: "ok", msg: "Producto Creado con exito!"}
+*/
+
+app.post("/administrador/registro", (req, res) => {
   const data = req.body;
   const prod = new Usuario(data);
-  prod.save( function (error) {
+  prod.save( (error) => {
     if (error){
-      res.send({estado: "error", msg: "ERROR: producto no guardado! "});
+      res.send({estado: "error", msg: "ERROR: producto no guardado! 😒"});
       return false;
     }
-    res.send({estado: "ok", msg: "Producto Guardado! "});
+    res.send({estado: "ok", msg: "Producto Guardado! ✨"});
+  })
+});
+
+/*
+- API Rest Asignación Predio
+- Ruta: /usuarioConfiguracion/asignacionPredio
+- Metodo: POST
+- Respuesta: {estado: "ok", msg: "Producto Creado con exito!"}
+*/
+
+app.post("/usuarioConfiguracion/asignacionPredio",  (req, res) => {
+  const data = req.body;
+  const prod = new AsignacionPredio(data);
+  prod.save( (error) => {
+    if (error){
+      res.send({estado: "error", msg: "ERROR: producto no guardado! 😒"});
+      return false;
+    }
+    res.send({estado: "ok", msg: "Producto Guardado! ✨"});
+  })
+});
+
+/*
+- API Rest Crear Cultivo
+- Ruta: /usuarioConfiguracion/crearCultivo
+- Metodo: POST
+- Respuesta: {estado: "ok", msg: "Producto Creado con exito!"}
+*/
+
+app.post("/usuarioConfiguracion/crearCultivo",  (req, res) => {
+  const data = req.body;
+  const prod = new CrearCultivo(data);
+  prod.save( (error) => {
+    if (error){
+      res.send({estado: "error", msg: "ERROR: producto no guardado! 😒"});
+      return false;
+    }
+    res.send({estado: "ok", msg: "Producto Guardado! ✨"});
   })
 });
 
