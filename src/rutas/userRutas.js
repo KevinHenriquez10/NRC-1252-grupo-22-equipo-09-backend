@@ -38,11 +38,11 @@ userRutas.post("/save", userGuard, function (req, res) {
     // Guarda en DB
     user.save( function (error) {
         if (error){
-            console.log(error)
+            console.log(error);
             return res.status(500).send({estado: "error", msg:"Error Usuario no guardado 🤨🤨"});
         }
-        return res.status(200).send({estado: "OK", msg:"Usuario Guardado con Éxito 😎😎"});
-    // Responde OK/Error
+    return res.status(200).send({estado: "OK", msg:"Usuario Guardado con Éxito 😎😎"});
+    //Responde OK/Error
     });
 })
 

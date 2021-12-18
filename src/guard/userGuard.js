@@ -14,6 +14,7 @@ function userGuard(req, res, next){
             next(res.status(403).json({estado:"error", msg: "NO Autorizado"}))
         }
     } catch (error) {
+        console.log(error);
     }
     next();
     // Verificar el Token, con la clave
