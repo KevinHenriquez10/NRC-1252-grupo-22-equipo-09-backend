@@ -33,7 +33,7 @@ const crearCultivoModel = new Schema({
     tCultivo: {
     type: 'string',
     required: true,
-    },
+    }
 });
 
 module.exports = mongoose.model('CrearCultivo', crearCultivoModel);

@@ -31,7 +31,7 @@ const asignacionPredioModel = new Schema({
     correo: {
     type: 'string',
     required: true,
-    },
+    }
 });
 
 module.exports = mongoose.model('AsignacionPredio', asignacionPredioModel);

@@ -37,10 +37,14 @@
     "prettier": "^2.5.1"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^6.1.2"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.2",
+    "nodemon": "^2.0.15"
   },
   "homepage": "https://github.com/MISIONTIC-UN-2022/node-template#readme",
   "description": ""

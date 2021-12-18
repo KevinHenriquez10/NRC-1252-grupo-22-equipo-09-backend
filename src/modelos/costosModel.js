@@ -1,29 +1,31 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const registroPredioModel = new Schema({
-    nombre: {
-    type: 'string',
-    unique: true,
-    required: true,
-    },
-    codigo: {
-    type: 'number',
-    unique: true,
-    required: true,
-    },
-    area: {
+const costosModel = new Schema({
+    canSemilla: {
     type: 'number',
     required: true,
     },
-    latitud: {
+    valorSemilla: {
     type: 'number',
     required: true,
     },
-    longitud: {
+    canFertilizante: {
+    type: 'number',
+    required: true,
+    },
+    valorFertilizante: {
+    type: 'number',
+    required: true,
+    },
+    canAgua: {
+    type: 'number',
+    required: true,
+    },
+    valorAgua: {
     type: 'number',
     required: true,
     }
 });
 
-module.exports = mongoose.model('RegistroPredio', registroPredioModel);
+module.exports = mongoose.model('Costos', costosModel);
